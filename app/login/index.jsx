@@ -46,7 +46,8 @@ export default function LoginScreen() {
 
 const styles = StyleSheet.create({
     imageContainer:{
-        alignItems:"center"
+        alignItems:"center",
+        marginTop: 20
     },  
     bgImage:{
         width: 200,

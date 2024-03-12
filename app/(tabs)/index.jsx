@@ -1,8 +1,9 @@
 import { Button, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect } from 'react'
 import { Link, useRouter } from 'expo-router'
-import services from '../utils/services'
-import { client } from '../utils/KindeConfig'
+import services from '../../utils/services' 
+import { client } from '../../utils/KindeConfig'
+
 
 export default function Home() {
 
@@ -44,7 +45,7 @@ export default function Home() {
 
 const styles = StyleSheet.create({
     container:{
-      marginTop: 20
+    //   marginTop: 20
     },
     text:{
         fontSize: 20,
