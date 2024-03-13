@@ -1,7 +1,6 @@
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
-import React from 'react'
-import { Stack } from 'expo-router'
-import { useFonts } from 'expo-font'
+import { useFonts } from 'expo-font';
+import { Stack } from 'expo-router';
+import React from 'react';
 
 /**
  * This is the main navigation file for entire app
@@ -18,13 +17,9 @@ export default function HomeLayout() {
   return (
       <Stack screenOptions={{ headerShown:false }} >
         <Stack.Screen name='(tabs)' options={{headerShown:false}}/>
+        <Stack.Screen name='add-new-category' options={{headerShown:true, presentation:"modal", headerTitle:"Add new category"}}/>
+
       </Stack>
 
   )
 }
-
-const styles = StyleSheet.create({
-  container:{
-    paddingTop: 20
-  }
-})
