@@ -6,6 +6,7 @@ import { client } from "../../utils/KindeConfig";
 import { supabase } from "../../utils/subaBaseConfig";
 import Header from "../../components/Header";
 import colors from "../../utils/colors";
+import CircularChart from "../../components/CircularChart";
 
 export default function Home() {
 	const router = useRouter();
@@ -50,6 +51,7 @@ export default function Home() {
 	return (
 		<View style={styles.container}>
 			<Header />
+			<CircularChart />
 		</View>
 	);
 }
@@ -59,7 +61,8 @@ const styles = StyleSheet.create({
 		marginTop: 20,
 		padding: 20,
 		backgroundColor: colors.PRIMARY,
-		height: 150 
+		// we fix height of container so other components overflow
+		height: 150
 	},
 	text: {
 		fontSize: 20,
