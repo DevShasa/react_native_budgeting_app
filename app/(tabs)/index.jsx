@@ -4,6 +4,8 @@ import { Link, useRouter } from "expo-router";
 import services from "../../utils/services";
 import { client } from "../../utils/KindeConfig";
 import { supabase } from "../../utils/subaBaseConfig";
+import Header from "../../components/Header";
+import colors from "../../utils/colors";
 
 export default function Home() {
 	const router = useRouter();
@@ -19,20 +21,17 @@ export default function Home() {
 			// redirect to login page
 			router.replace("/login");
 		}
-		console.log("LOG IN --->", result);
 	};
 
 	// Fetch all categories that belong to a specific user
 	const getUsersCategory = async () => {
 		const user = await client.getUserDetails();
-        console.log(user.email)
 
         let { data: Category, error } = await supabase
         .from('Category')
         .select('*')        
 		.eq("created_by", user.email);
 
-		console.log("Users category --->", Category);
 	};
 
 	const handleLogout = async () => {
@@ -50,8 +49,7 @@ export default function Home() {
 
 	return (
 		<View style={styles.container}>
-			<Text style={styles.text}>Guruji my maan</Text>
-			<Button title="Logout" onPress={handleLogout} />
+			<Header />
 		</View>
 	);
 }
@@ -59,6 +57,9 @@ export default function Home() {
 const styles = StyleSheet.create({
 	container: {
 		marginTop: 20,
+		padding: 20,
+		backgroundColor: colors.PRIMARY,
+		height: 150 
 	},
 	text: {
 		fontSize: 20,
