@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TextInput, View, ToastAndroid } from "react-native";
+import { StyleSheet, Text, TextInput, View, ToastAndroid, TouchableOpacity, ActivityIndicator } from "react-native";
 import { useState } from "react";
 import colors from "../utils/colors";
 import ColorPicker from "../components/ColorPicker";
@@ -8,13 +8,15 @@ import { client } from "../utils/KindeConfig";
 import { supabase } from "../utils/subaBaseConfig";
 
 export default function AddNewCategory() {
-	const [selectedIcon, setSelectedIcon] = useState("IC");
+	const [selectedIcon, setSelectedIcon] = useState("😄");
     const [selectedColor, setSelectedColor] = useState(colors.PRIMARY)
     const [ categoryName, setCategoryName ] = useState()
     const [totalBudget, setTotalBudget] = useState()
     const [loading, setLoading] = useState(false)
 
     const router = useRouter()
+
+    console.log(selectedIcon)
 
     /**
      * Function to create a new entry in the supabase category table
@@ -75,6 +77,39 @@ export default function AddNewCategory() {
                 </TextInput>
                 <ColorPicker changeColor={changeColor} selectedColor={selectedColor}/>
 			</View>
+            <View style={styles.inputView}>
+                    <MaterialIcons name="local-offer" size={24} color={colors.GRAY}/>
+                    <TextInput
+                        placeholder="Category Name"
+                        style={styles.textInput}
+                        onChangeText={setCategoryName}
+                    />
+                </View>
+
+                <View style={styles.inputView}>
+                    <FontAwesome6 name="dollar-sign" size={24} color={colors.GRAY}/>
+                    <TextInput
+                        placeholder="Total Budget"
+                        style={styles.textInput}
+                        onChangeText={setTotalBudget}
+                    />
+                </View>
+
+                <TouchableOpacity 
+                    style={styles.createCategoryButton}
+                    onPress={()=>{}}
+                    disabled={!categoryName||loading||!totalBudget}
+                >
+                    {
+                        loading
+                        ? <ActivityIndicator color={colors.WHITE} />
+                        : (
+                            <Text style={{color:colors.WHITE, fontSize: 16, textAlign:"center"}}>
+                                Create
+                            </Text>
+                        )
+                    }
+                </TouchableOpacity>
 		</View>
 	);
 }
@@ -93,9 +128,25 @@ const styles = StyleSheet.create({
         color: "white"
 	},
     inputView:{
+        padding: 14,
+        flexDirection:"row",
+        gap: 5,
+        alignItems:"center",
+        borderWidth: 1,
+        borderColor: colors.GRAY,
+        borderRadius:10,
+        backgroundColor: colors.WHITE,
+        marginTop: 20
 
     },
     createCategoryButton:{
-
+        backgroundColor: colors.PRIMARY,
+        padding: 15,
+        borderRadius: 10, 
+        marginTop: 30
+    },
+    textInput:{
+        width:'100%',
+        fontSize: 17
     }
 });
