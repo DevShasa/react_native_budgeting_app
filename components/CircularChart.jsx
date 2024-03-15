@@ -7,7 +7,7 @@ import {MaterialCommunityIcons} from "@expo/vector-icons"
 export default function CircularChart() {
 
     const [series, setSeries] = useState([1])
-    const [sliceColor, setSliceColor] = useState([colors.GREY])
+    const [sliceColor, setSliceColor] = useState([colors.GRAY])
 
   return (
     <View style={styles.donutContainer}>
