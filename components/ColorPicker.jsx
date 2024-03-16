@@ -11,7 +11,7 @@ const ColorPicker = ({changeColor,selectedColor }) => {
         }}>
 			{colors.COLOR_LIST.map((color, index) => {
                 const calcborderwidth = selectedColor === color ? 2: 0
-                console.log(`SELECTED COLOR ---> ${selectedColor}, PRESENTCOLOR --->${color}`)
+                //console.log(`SELECTED COLOR ---> ${selectedColor}, PRESENTCOLOR --->${color}`)
 				return <TouchableOpacity
                     style={[
                         styles.colorbox,

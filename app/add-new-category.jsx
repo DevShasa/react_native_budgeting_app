@@ -16,8 +16,6 @@ export default function AddNewCategory() {
 
     const router = useRouter()
 
-    console.log(selectedIcon)
-
     /**
      * Function to create a new entry in the supabase category table
      */
@@ -30,29 +28,29 @@ export default function AddNewCategory() {
             }
             setLoading(true )
             // pass the data into supabase
-            const {data, error} = await supabase.from('Category')
-            .insert([{
+            const formdata = {
                 name:categoryName,
                 assigned_budget: totalBudget, 
                 icon: selectedIcon, 
                 color: selectedColor, 
                 created_by: email
-            }])
+            }
+            console.log("--->",formdata)
+            const {data, error} = await supabase.from('Category')
+            .insert([formdata])
             .select()
 
             console.log("RESULT AFTER CREATING CATEGORY:::", data)
-
-
             if(!data) throw new Error("UPLOAD TO SUPABASE FAIL")
 
             // IF WE REACH HERE WE GOOD
             ToastAndroid.show("Category Created", ToastAndroid.SHORT)
-            // router.replace({
-            //     pathname:'/category-detail',
-            //     params:{
-            //         categoryId: data[0]
-            //     }
-            // })
+            router.replace({
+                pathname:'/category-detail',
+                params:{
+                    categoryId: data[0]
+                }
+            })
 
         } catch (error) {
             console.log(error.message, error)
@@ -97,7 +95,7 @@ export default function AddNewCategory() {
 
                 <TouchableOpacity 
                     style={styles.createCategoryButton}
-                    onPress={()=>{}}
+                    onPress={createNewCategory}
                     disabled={!categoryName||loading||!totalBudget}
                 >
                     {
