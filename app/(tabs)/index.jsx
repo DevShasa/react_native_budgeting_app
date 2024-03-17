@@ -1,5 +1,5 @@
 import { Button, StyleSheet, Text, View } from "react-native";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useRouter } from "expo-router";
 import services from "../../utils/services";
 import { client } from "../../utils/KindeConfig";
@@ -8,10 +8,13 @@ import Header from "../../components/Header";
 import colors from "../../utils/colors";
 import CircularChart from "../../components/CircularChart";
 import {Ionicons} from "@expo/vector-icons"
+import CategoryList from "../../components/CategoryList";
 
 export default function Home() {
 	const router = useRouter();
 
+	const [categoryList, setCategoryList] = useState()
+	console.log("HOMEPAGE CATEGORY LIST-->", categoryList)
 	/**
 	 * Check if user is authenticated
 	 */
@@ -31,10 +34,12 @@ export default function Home() {
 
         let { data: Category, error } = await supabase
         .from('Category')
-        .select('*')        
+        .select('*, CategoryItems(*)' )        
 		.eq("created_by", user.email);
 
+		setCategoryList(Category)
 	};
+
 
 	const handleLogout = async () => {
 		const loggedOut = await client.logout();
@@ -54,6 +59,7 @@ export default function Home() {
 			<View style={styles.header}>
 				<Header />
 				<CircularChart />
+				<CategoryList categorylist={categoryList}/>
 			</View>
 			<Link style={styles.addButton} href={'/add-new-category'}>
 				<Ionicons name="add-circle" size={54} color={colors.PRIMARY} />

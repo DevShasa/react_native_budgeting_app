@@ -45,12 +45,12 @@ export default function AddNewCategory() {
 
             // IF WE REACH HERE WE GOOD
             ToastAndroid.show("Category Created", ToastAndroid.SHORT)
-            router.replace({
-                pathname:'/category-detail',
-                params:{
-                    categoryId: data[0]
-                }
-            })
+            // router.replace({
+            //     pathname:'/category-detail',
+            //     params:{
+            //         categoryId: data[0].id
+            //     }
+            // })
 
         } catch (error) {
             console.log(error.message, error)
