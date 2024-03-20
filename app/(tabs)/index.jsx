@@ -1,4 +1,4 @@
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, View, StatusBar } from "react-native";
 import React, { useEffect, useState } from "react";
 import { Link, useRouter } from "expo-router";
 import services from "../../utils/services";
@@ -71,7 +71,7 @@ export default function Home() {
 
 const styles = StyleSheet.create({
 	container: {
-		marginTop: 20,
+		marginTop: StatusBar.currentHeight  ,
 		flex: 1
 	},
 	header:{
