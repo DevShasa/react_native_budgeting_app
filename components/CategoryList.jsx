@@ -4,30 +4,33 @@ import colors from '../utils/colors'
 
 const CategoryList = ({categorylist}) => {
   return (
-    <View style={{marginTop: 20}}>
+    <View style={{marginTop: 150, padding: 20, height: 500, }}>
       <Text style={styles.headerText}>Latest Budget</Text>
-      <View>
-        {categorylist && categorylist?.map((category, index)=>{
-            return (
-                <View style={styles.container} key={index}>
-                        <View style={styles.iconContainer}>
-                            <Text style={[styles.iconText, {backgroundColor:category?.color}]}>
-                                {category.icon}
-                            </Text>
-                        </View>
-                        <View style={styles.subContainer}>
-                            <View>
-                                <Text style={styles.categoryText}>{category?.name}</Text>
-                                <Text style={styles.itemCount}>{category?.CategoryItems?.length} Items</Text>
+        <ScrollView style={{paddingBottom: 100}}>
+            {categorylist && categorylist?.map((category, index)=>{
+                const lastMargin = index === categorylist.length-1 ? {marginBottom: 60} : {}
+                const firstMargin = index === 0 ? {marginTop: 20} : {}
+                return (
+                    <View style={[styles.container, lastMargin, firstMargin]} key={index}>
+                            <View style={styles.iconContainer}>
+                                <Text style={[styles.iconText, {backgroundColor:category?.color}]}>
+                                    {category.icon}
+                                </Text>
                             </View>
-                            <Text style={styles.totalAmmountText}>
-                                ${`420`}
-                            </Text>
-                        </View>
-                </View>
-            )
-        })}
-      </View>
+                            <View style={styles.subContainer}>
+                                <View>
+                                    <Text style={styles.categoryText}>{category?.name}</Text>
+                                    <Text style={styles.itemCount}>{category?.CategoryItems?.length} Items</Text>
+                                </View>
+                                <Text style={styles.totalAmmountText}>
+                                    ${`420`}
+                                </Text>
+                            </View>
+                    </View>
+                )
+            })}
+        </ScrollView>
+
     </View>
   )
 }

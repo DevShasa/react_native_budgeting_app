@@ -1,4 +1,4 @@
-import { Button, StyleSheet, Text, View, StatusBar } from "react-native";
+import { Button, StyleSheet, Text, View, StatusBar, ScrollView } from "react-native";
 import React, { useEffect, useState } from "react";
 import { Link, useRouter } from "expo-router";
 import services from "../../utils/services";
@@ -59,13 +59,12 @@ export default function Home() {
 			<View style={styles.header}>
 				<Header />
 				<CircularChart />
-				<CategoryList categorylist={categoryList}/>
 			</View>
-			<Link style={styles.addButton} href={'/add-new-category'}>
+			<CategoryList categorylist={categoryList} />
+			<Link style={styles.addButton} href={"/add-new-category"}>
 				<Ionicons name="add-circle" size={54} color={colors.PRIMARY} />
 			</Link>
 		</View>
-
 	);
 }
 
