@@ -1,7 +1,6 @@
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router/stack";
 import React from "react";
-import { View } from "react-native";
 /**
  * This is the main navigation file for entire app
  */

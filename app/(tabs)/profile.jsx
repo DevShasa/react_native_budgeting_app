@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, StatusBar } from 'react-native'
 import React from 'react'
 
 export default function Profile() {
@@ -9,4 +9,8 @@ export default function Profile() {
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  profileContainer:{
+    marginTop: StatusBar.currentHeight
+  }
+})

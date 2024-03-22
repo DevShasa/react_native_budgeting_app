@@ -32,10 +32,7 @@ export default function LoginScreen() {
         <Text style={styles.loginText}>
           Stay on Track, Event by Event: Your Personal Budget App
         </Text>
-        <TouchableOpacity 
-          style={styles.loginButton}
-          onPress={handleSignIn}
-        >
+        <TouchableOpacity style={styles.loginButton} onPress={handleSignIn} >
           <Text style={styles.loginbuttontext}>Login/Signup</Text>
         </TouchableOpacity>
         <Text style={{fontSize: 13, color:colors.GREY, marginTop:10}}>* By logging in, you agree to our terms and conditions</Text>

@@ -1,33 +1,33 @@
-import { Button, StyleSheet, Text, View, StatusBar, ScrollView } from "react-native";
-import React, { useEffect, useState } from "react";
+import { Ionicons } from "@expo/vector-icons";
 import { Link, useRouter } from "expo-router";
-import services from "../../utils/services";
-import { client } from "../../utils/KindeConfig";
-import { supabase } from "../../utils/subaBaseConfig";
-import Header from "../../components/Header";
-import colors from "../../utils/colors";
-import CircularChart from "../../components/CircularChart";
-import {Ionicons} from "@expo/vector-icons"
+import React, { useEffect, useState } from "react";
+import { StatusBar, StyleSheet, View } from "react-native";
 import CategoryList from "../../components/CategoryList";
+import CircularChart from "../../components/CircularChart";
+import Header from "../../components/Header";
+import { client } from "../../utils/KindeConfig";
+import colors from "../../utils/colors";
+import services from "../../utils/services";
+import { supabase } from "../../utils/subaBaseConfig";
 
 export default function Home() {
 	const router = useRouter();
 
 	const [categoryList, setCategoryList] = useState()
-	console.log("HOMEPAGE CATEGORY LIST-->", categoryList)
+	//console.log("HOMEPAGE CATEGORY LIST-->", categoryList)
+
 	/**
 	 * Check if user is authenticated
 	 */
 	const checkUserAuth = async () => {
 		const result = await services.getData("login");
-
-		services;
-		if (!result) {
-			// redirect to login page
-			router.replace("/login");
-		}
+		if (!result) { router.replace("/login"); }
 	};
 
+	/**
+	 * USER AUTHENTICATED ZONE
+	 */
+	
 	// Fetch all categories that belong to a specific user
 	const getUsersCategory = async () => {
 		const user = await client.getUserDetails();

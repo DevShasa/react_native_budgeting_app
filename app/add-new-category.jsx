@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TextInput, View, ToastAndroid, TouchableOpacity, ActivityIndicator } from "react-native";
+import { StatusBar,StyleSheet, Text, TextInput, View, ToastAndroid, TouchableOpacity, ActivityIndicator } from "react-native";
 import { useState } from "react";
 import colors from "../utils/colors";
 import ColorPicker from "../components/ColorPicker";
@@ -114,7 +114,7 @@ export default function AddNewCategory() {
 
 const styles = StyleSheet.create({
 	container: {
-		marginTop: 20,
+		marginTop: StatusBar.currentHeight,
 		padding: 20,
 	},
 	textIconInput: {

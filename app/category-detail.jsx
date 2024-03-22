@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, StatusBar } from 'react-native'
 import React from 'react'
 import { supabase } from '../utils/subaBaseConfig'
 import {useLocalSearchParams, Link, useRouter} from 'expo-router'
@@ -16,7 +16,7 @@ const CategoryDetail = () => {
     // }
 
     return (
-    <View>
+    <View style={styles.categoryContainer}>
       <Text>CategoryDetail</Text>
     </View>
   )
@@ -24,4 +24,8 @@ const CategoryDetail = () => {
 
 export default CategoryDetail
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  categoryContainer:{
+    marginTop: StatusBar.currentHeight
+  }
+})

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, StatusBar } from 'react-native'
 import React from 'react'
 
 export default function History() {
@@ -9,4 +9,7 @@ export default function History() {
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  marginTop: StatusBar.currentHeight
+
+})
