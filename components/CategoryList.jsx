@@ -1,8 +1,22 @@
 import { StyleSheet, Text, TouchableOpacity, View, ScrollView } from 'react-native'
 import React from 'react'
 import colors from '../utils/colors'
+import { useRouter } from 'expo-router'
 
 const CategoryList = ({categorylist}) => {
+
+    const router = useRouter()
+
+    function onCategoryClick(category){
+        // reirect to the category page
+        router.push({
+            pathname:"/category-detail",
+            params: {
+                categoryId: category.id
+            }
+        })
+    }
+
   return (
     <View style={{marginTop: 150, padding: 20, height: 500, }}>
       <Text style={styles.headerText}>Latest Budget</Text>
@@ -11,7 +25,7 @@ const CategoryList = ({categorylist}) => {
                 const lastMargin = index === categorylist.length-1 ? {marginBottom: 60} : {}
                 const firstMargin = index === 0 ? {marginTop: 20} : {}
                 return (
-                    <View style={[styles.container, lastMargin, firstMargin]} key={index}>
+                    <TouchableOpacity  onPress={()=>onCategoryClick(category)} style={[styles.container, lastMargin, firstMargin]} key={index}>
                             <View style={styles.iconContainer}>
                                 <Text style={[styles.iconText, {backgroundColor:category?.color}]}>
                                     {category.icon}
@@ -26,7 +40,7 @@ const CategoryList = ({categorylist}) => {
                                     ${`420`}
                                 </Text>
                             </View>
-                    </View>
+                    </TouchableOpacity>
                 )
             })}
         </ScrollView>
